@@ -3,14 +3,8 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const products = require("./routes/products.router");
-const users = require("./routes/users.router");
 const categories = require("./routes/categories.router");
-const favorites = require("./routes/favorites.router");
-const reviews = require("./routes/reviews.router");
 const cors = require("cors");
-const orders = require("./routes/orders.router")
-const payment = require("./routes/payment.router")
-const cart = require("./routes/cart.router")
 
 require("./db.js");
 

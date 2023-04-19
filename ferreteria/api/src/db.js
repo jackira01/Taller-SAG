@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-const DB = process.env.MONGODB_URI;
+const DB =
+  "mongodb+srv://admin:admin@ferreteria.logo8tc.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.set("strictQuery", false);
 
