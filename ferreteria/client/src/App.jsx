@@ -1,19 +1,22 @@
 // import "./App.css";
 import React from "react";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "../src/Views/Home/Home.jsx";
+import ProductPage from "../src/Views/ProductPage/ProductPage.jsx";
+import About from "../src/Views/About/About.jsx";
+import NavBar from "./Components/NavBar/NavBar.jsx";
 function App() {
   return (
-    <div className="App">
-      <div className="container">
-        <h1>Hola soy la app</h1>
-        <button
-          type="button"
-          class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-        >
-          button
-        </button>
+    <BrowserRouter>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/home" Component={Home} />
+          <Route path="/products" Component={ProductPage} />
+          <Route path="/about" Component={About} />
+        </Routes>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
