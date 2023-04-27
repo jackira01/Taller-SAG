@@ -526,6 +526,9 @@ video {
 .flex {
   display: flex;
 }
+.inline-flex {
+  display: inline-flex;
+}
 .hidden {
   display: none;
 }
@@ -668,9 +671,9 @@ video {
 .btn-cian {
   border-radius: 0.5rem;
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
-  --tw-gradient-from: #06b6d4 var(--tw-gradient-from-position);
+  --tw-gradient-from: #3b82f6 var(--tw-gradient-from-position);
   --tw-gradient-from-position:  ;
-  --tw-gradient-to: rgb(6 182 212 / 0)  var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(59 130 246 / 0)  var(--tw-gradient-from-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
   --tw-gradient-to: #3b82f6 var(--tw-gradient-to-position);
   --tw-gradient-to-position:  ;
