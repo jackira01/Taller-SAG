@@ -23,7 +23,6 @@ const NavBar = () => {
         </Link>
         <div className="hidden md:block ">
           <Menu />
-          <button class="btn-cian">ssss</button>
         </div>
 
         <button
