@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import DarkModeButton from "../../DarkMode/DarkModeButton";
 import Search from "../Search/Search";
 
 const Menu = () => {
@@ -61,6 +61,9 @@ const Menu = () => {
               Contacto
             </span>
           </Link>
+        </li>
+        <li>
+          <DarkModeButton />
         </li>
         <Search />
       </ul>
