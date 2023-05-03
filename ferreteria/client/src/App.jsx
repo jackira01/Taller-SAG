@@ -6,17 +6,20 @@ import ProductPage from "../src/Views/ProductPage/ProductPage.jsx";
 import About from "../src/Views/About/About.jsx";
 import NavBar from "./Components/NavBar/NavBar.jsx";
 import Contact from "./Views/Contact/Contact.jsx";
+import Chatbot from "./Components/ChatBot/ChatBot.jsx";
+
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <NavBar />
         <Routes>
-          <Route path="/home" Component={Home} />
+          <Route path="/" Component={Home} />
           <Route path="/products" Component={ProductPage} />
           <Route path="/about" Component={About} />
           <Route path="/contact" Component={Contact} />
         </Routes>
+        <Chatbot />
       </div>
     </BrowserRouter>
   );
