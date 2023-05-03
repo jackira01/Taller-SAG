@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import ChatBot from "react-simple-chatbot";
 
 const ChatbotComponent = () => {

@@ -2,13 +2,9 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import Search from "../Search/Search";
-import LoginButton from "../../Auth0/Login";
-import LogoutButton from "../../Auth0/Logout";
-import { useAuth0 } from "@auth0/auth0-react";
 
 const Menu = () => {
   const location = useLocation();
-  const { user } = useAuth0();
   return (
     <div class="w-full md:flex md:w-auto md:order-1">
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
@@ -67,7 +63,6 @@ const Menu = () => {
           </Link>
         </li>
         <Search />
-        {user ? <LogoutButton /> : <LoginButton />}
       </ul>
     </div>
   );
