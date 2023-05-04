@@ -30,13 +30,13 @@ const ChatbotComponent = () => {
     {
       id: "about",
       message:
-        "Somos una empresa que se dedica a la venta de productos de belleza.",
+        "Somos una empresa que se dedica a la venta de productos de ferreteria.",
       trigger: "end",
     },
     {
       id: "contact",
       message:
-        "Puedes encontrarnos en nuestra página web o en nuestras redes sociales.",
+        "Puedes comunicarte con nosotros mediante el este whatsApp ###.",
       trigger: "end",
     },
     {
@@ -53,11 +53,12 @@ const ChatbotComponent = () => {
 
   return (
     <ChatBot
-      headerTitle="ChatBot de ejemplo"
+      headerTitle="Ferreteria"
       steps={steps}
       botAvatar="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
       userAvatar="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
       floating
+      chatbotResetTimeout={300} // 5 minutos
     />
   );
 };

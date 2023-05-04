@@ -63,9 +63,13 @@ const Menu = () => {
           </Link>
         </li>
         <li>
-          <DarkModeButton />
+          
         </li>
+
         <Search />
+        <li>
+        <DarkModeButton />
+        </li>
       </ul>
     </div>
   );

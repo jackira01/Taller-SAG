@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Styles.css";
 
 function DarkModeButton() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -9,14 +10,10 @@ function DarkModeButton() {
   };
 
   return (
-    <button
-      className={`fb-btn fb-btn-sm ${
-        isDarkMode ? "fb-btn-secondary" : "fb-btn-dark text-white"
-      }`}
-      onClick={toggleDarkMode}
-    >
-      {isDarkMode ? "Light mode " : "Dark mode"}
-    </button>
+    <label class="switch">
+      <input type="checkbox" onClick={toggleDarkMode} />
+      <span class="slider"></span>
+    </label>
   );
 }
 
