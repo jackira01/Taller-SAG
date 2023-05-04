@@ -1010,6 +1010,9 @@ input:checked + .toggle-bg {
 .z-50 {
   z-index: 50;
 }
+.col-span-6 {
+  grid-column: span 6 / span 6;
+}
 .m-auto {
   margin: auto;
 }
@@ -1130,6 +1133,9 @@ input:checked + .toggle-bg {
 .table {
   display: table;
 }
+.grid {
+  display: grid;
+}
 .hidden {
   display: none;
 }
@@ -1235,9 +1241,6 @@ input:checked + .toggle-bg {
 }
 .w-4 {
   width: 1rem;
-}
-.w-44 {
-  width: 11rem;
 }
 .w-5 {
   width: 1.25rem;
@@ -1363,6 +1366,9 @@ input:checked + .toggle-bg {
 }
 .appearance-none {
   appearance: none;
+}
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 .flex-col {
   flex-direction: column;
@@ -4557,6 +4563,10 @@ input:checked + .toggle-bg {
 
 @media (min-width: 640px) {
 
+  .sm\:col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+
   .sm\:mx-auto {
     margin-left: auto;
     margin-right: auto;
@@ -4617,6 +4627,10 @@ input:checked + .toggle-bg {
 
   .md\:order-1 {
     order: 1;
+  }
+
+  .md\:col-span-3 {
+    grid-column: span 3 / span 3;
   }
 
   .md\:mx-2 {
@@ -4758,9 +4772,20 @@ input:checked + .toggle-bg {
 
 @media (min-width: 1024px) {
 
+  .lg\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
+
   .lg\:my-8 {
     margin-top: 2rem;
     margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .xl\:col-span-2 {
+    grid-column: span 2 / span 2;
   }
 }
 
