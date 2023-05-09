@@ -11,14 +11,15 @@ const ChatbotComponent = () => {
       id: "options",
       options: [
         {
-          value: "about",
-          label: "Acerca de",
-          trigger: "about",
+          value: "calendar",
+          label: "¿Cual es el horario de atencion?",
+          trigger: "calendar",
         },
         {
-          value: "contact",
-          label: "Contacto",
-          trigger: "contact",
+          value: "advice",
+          label:
+            "¿Dónde me puedo comunicar para tener una asesoría personalizada?",
+          trigger: "advice",
         },
         {
           value: "other",
@@ -28,15 +29,15 @@ const ChatbotComponent = () => {
       ],
     },
     {
-      id: "about",
+      id: "calendar",
       message:
-        "Somos una empresa que se dedica a la venta de productos de ferreteria.",
+        "El PBX +57 601 875 9100 está disponible para atender sus inquietudes de 7 am a 5 pm de lunes a viernes y sábados de 7 am a 12 m.",
       trigger: "end",
     },
     {
-      id: "contact",
+      id: "advice",
       message:
-        "Puedes comunicarte con nosotros mediante el este whatsApp ###.",
+        "Usted puede comunicarse con nuestros asesores especializados al PBX  +57 601 875 9100 o  por medio de Whatsapp al 313 455 6542, donde con gusto atenderemos su requerimientos.",
       trigger: "end",
     },
     {
