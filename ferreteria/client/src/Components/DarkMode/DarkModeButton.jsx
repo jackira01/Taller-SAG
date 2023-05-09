@@ -10,10 +10,12 @@ function DarkModeButton() {
   };
 
   return (
-    <label class="switch">
-      <input type="checkbox" onClick={toggleDarkMode} />
-      <span class="slider"></span>
-    </label>
+    <div id="page-content">
+      <label class="switch">
+        <input type="checkbox" onClick={toggleDarkMode} />
+        <span class="slider"></span>
+      </label>
+    </div>
   );
 }
 
