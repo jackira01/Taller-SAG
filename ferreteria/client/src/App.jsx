@@ -6,7 +6,7 @@ import ProductPage from "../src/Views/ProductPage/ProductPage.jsx";
 import About from "../src/Views/About/About.jsx";
 import NavBar from "./Components/NavBar/NavBar.jsx";
 import Chatbot from "./Components/ChatBot/ChatBot.jsx";
-
+import DetailProduct from "./Views/DetailProduct/DetailProduct.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" Component={Home} />
           <Route path="/products" Component={ProductPage} />
+          <Route path="/products/:id" Component={DetailProduct} />
           <Route path="/pruebas" Component={About} />
         </Routes>
         <Chatbot />
