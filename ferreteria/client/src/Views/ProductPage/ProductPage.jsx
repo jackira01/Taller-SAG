@@ -14,14 +14,14 @@ const ProductPage = () => {
 
   return (
     <div class="justify-center w-full ">
-      <div className="text-center">
-        <Pagination
-          maxCards={products}
-          cardsPerPage={cardsPerPage}
-          currentPage={currentPage}
-          setcurrentPage={setcurrentPage}
-        />
-      </div>
+      {/* <div className="text-center"> */}
+      <Pagination
+        maxCards={products}
+        cardsPerPage={cardsPerPage}
+        currentPage={currentPage}
+        setcurrentPage={setcurrentPage}
+      />
+      {/* </div> */}
       <div class=" flex justify-center w-full ">
         <div class="grid grid-cols-6 gap-4">
           {cardsCurrent.map((card) => (
@@ -38,6 +38,12 @@ const ProductPage = () => {
           ))}
         </div>
       </div>
+      <Pagination
+        maxCards={products}
+        cardsPerPage={cardsPerPage}
+        currentPage={currentPage}
+        setcurrentPage={setcurrentPage}
+      />
     </div>
   );
 };
