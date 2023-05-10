@@ -10,8 +10,8 @@ import DetailProduct from "./Views/DetailProduct/DetailProduct.jsx";
 function App() {
   return (
     <BrowserRouter>
+      <NavBar />
       <div className="App">
-        <NavBar />
         <Routes>
           <Route path="/" Component={Home} />
           <Route path="/products" Component={ProductPage} />
