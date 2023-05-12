@@ -3,7 +3,9 @@ import Card from "../../Components/Card/Card.jsx";
 import { products } from "./jsons/productos.js";
 import Pagination from "../../Components/Paginate/Paginate.jsx";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProducts } from "../../redux/actions.js";
 
 const ProductPage = () => {
   const [currentPage, setcurrentPage] = useState(1);
@@ -11,6 +13,16 @@ const ProductPage = () => {
   const indexLastCard = currentPage * cardsPerPage;
   const indexfirstCard = indexLastCard - cardsPerPage;
   const cardsCurrent = products.slice(indexfirstCard, indexLastCard);
+  const dispatch = useDispatch();
+  const Allproducts = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+
+    // return () => {
+    //   second
+    // }
+  }, [dispatch]);
 
   return (
     <div class="justify-center w-full ">
@@ -38,12 +50,7 @@ const ProductPage = () => {
           ))}
         </div>
       </div>
-      <Pagination
-        maxCards={products}
-        cardsPerPage={cardsPerPage}
-        currentPage={currentPage}
-        setcurrentPage={setcurrentPage}
-      />
+      {console.log(Allproducts)}
     </div>
   );
 };
