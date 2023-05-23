@@ -4,6 +4,7 @@ import Brands from "../../Components/Brands/Brands";
 
 import "./Home.css";
 import ProductsCarousel from "./ProductsCarousel/ProductsCarousel";
+import FilosofySeccion from "./FilosofySeccion/FilosofySeccion";
 
 const Home = () => {
   return (
@@ -12,7 +13,10 @@ const Home = () => {
 
       <Brands />
 
+      <FilosofySeccion />
+
       <ProductsCarousel />
+
     </>
   );
 };

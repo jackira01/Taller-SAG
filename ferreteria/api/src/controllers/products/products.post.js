@@ -9,7 +9,7 @@ productsCtrl.createNewProduct = async (req, res) => {
       data,
     });
     await newProduct.save();
-    res.status(200).send(data);
+    res.status(200).send(newProduct);
   } catch (error) {
     res.status(200).send(error.message);
   }

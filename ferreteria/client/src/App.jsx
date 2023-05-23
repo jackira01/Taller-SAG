@@ -3,10 +3,12 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../src/Views/Home/Home.jsx";
 import ProductPage from "../src/Views/ProductPage/ProductPage.jsx";
-import About from "../src/Views/About/About.jsx";
 import NavBar from "./Components/NavBar/NavBar.jsx";
 import Chatbot from "./Components/ChatBot/ChatBot.jsx";
 import DetailProduct from "./Views/DetailProduct/DetailProduct.jsx";
+import FormContact from "./Views/Contact/Contact";
+import ProductCard from "./Components/Card/ProductCard";
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,7 +18,8 @@ function App() {
           <Route path="/" Component={Home} />
           <Route path="/products" Component={ProductPage} />
           <Route path="/products/:id" Component={DetailProduct} />
-          <Route path="/pruebas" Component={About} />
+          <Route path="/servicios" Component={FormContact} />
+          <Route path="/pruebas" Component={ProductCard} />
         </Routes>
         <Chatbot />
       </div>
