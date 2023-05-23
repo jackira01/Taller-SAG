@@ -7,8 +7,7 @@ import NavBar from "./Components/NavBar/NavBar.jsx";
 import Chatbot from "./Components/ChatBot/ChatBot.jsx";
 import DetailProduct from "./Views/DetailProduct/DetailProduct.jsx";
 import FormContact from "./Views/Contact/Contact";
-import ProductCard from "./Components/Card/CardDemo";
-import CardDemo2 from "./Components/Card/CardDemo2";
+import ProductCard from "./Components/Card/ProductCard";
 
 function App() {
   return (
@@ -20,7 +19,7 @@ function App() {
           <Route path="/products" Component={ProductPage} />
           <Route path="/products/:id" Component={DetailProduct} />
           <Route path="/servicios" Component={FormContact} />
-          <Route path="/pruebas" Component={CardDemo2} />
+          <Route path="/pruebas" Component={ProductCard} />
         </Routes>
         <Chatbot />
       </div>
