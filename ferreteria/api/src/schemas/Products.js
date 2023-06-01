@@ -17,12 +17,6 @@ const products = mongoose.Schema({
   brand: {
     type: String,
   },
-  model: {
-    type: String,
-  },
-  stock: {
-    type: Number,
-  },
   category: {
     type: String,
   },

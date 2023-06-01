@@ -5,9 +5,7 @@ import Home from "../src/Views/Home/Home.jsx";
 import ProductPage from "../src/Views/ProductPage/ProductPage.jsx";
 import NavBar from "./Components/NavBar/NavBar.jsx";
 import Chatbot from "./Components/ChatBot/ChatBot.jsx";
-import DetailProduct from "./Views/DetailProduct/DetailProduct.jsx";
 import FormContact from "./Views/Contact/Contact";
-import ProductCard from "./Components/Card/ProductCard";
 
 function App() {
   return (
@@ -16,13 +14,12 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" Component={Home} />
-          <Route path="/products" Component={ProductPage} />
-          <Route path="/products/:id" Component={DetailProduct} />
+          <Route path="/productos" Component={ProductPage} />
           <Route path="/servicios" Component={FormContact} />
-          <Route path="/pruebas" Component={ProductCard} />
         </Routes>
         <Chatbot />
       </div>
+
     </BrowserRouter>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Menu from "./Menu/Menu.jsx";
+import DarkModeButton from "../DarkMode/DarkModeButton.jsx";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,7 @@ const NavBar = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <nav className="g-black border-gray-200 dark:bg-gray-900  fixed top-0 w-full z-50">
+    <nav className="g-black border-gray-200 dark:bg-gray-900 fixed top-0 w-full z-50">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/home" class="flex items-center">
           <img
@@ -48,6 +49,8 @@ const NavBar = () => {
         <div className={`${isOpen ? "block" : "hidden"} md:hidden w-full`}>
           <Menu />
         </div>
+
+        <DarkModeButton />
       </div>
     </nav>
   );

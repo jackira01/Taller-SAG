@@ -2,9 +2,9 @@ export const products = [
   {
     id: 1,
     img:
-      "https://media.flixcar.com/f360cdn/Samsung-106630345-latin-galaxy-a13-sm-a135-sm-a135mzkntpa-532118312--Download-Source--zoom.png",
-    name: "Samsum A13",
-    price: 32224,
+      "https://http2.mlstatic.com/D_NQ_NP_861727-MLA50531526512_062022-O.webp",
+    name: "ESTUFA GAS 4 P.CON HORNO ABBA",
+    price: 500.000,
     score: 3.4,
     category: "Phones",
   },
