@@ -6,7 +6,7 @@ productsCtrl.createNewProduct = async (req, res) => {
   const data = req.body;
   try {
     const newProduct = new Product({
-      data,
+      ...data,
     });
     await newProduct.save();
     res.status(200).send(newProduct);

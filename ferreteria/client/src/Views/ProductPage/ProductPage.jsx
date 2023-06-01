@@ -23,7 +23,7 @@ const ProductPage = () => {
           {cardsCurrent.map((card) => (
             <div class="col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2">
 
-              <ProductCard image={card.img} title={card.name} extraInfo={card.price} />
+              <ProductCard product={card} />
             </div>
           ))}
         </div>
