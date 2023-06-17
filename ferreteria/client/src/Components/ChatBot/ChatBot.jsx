@@ -1,6 +1,8 @@
+import { useLocation } from "react-router-dom";
 import ChatBot from "react-simple-chatbot";
 
 const ChatbotComponent = () => {
+  const location = useLocation();
   const steps = [
     {
       id: "intro",
@@ -53,14 +55,18 @@ const ChatbotComponent = () => {
   ];
 
   return (
-    <ChatBot
-      headerTitle="Ferreteria"
-      steps={steps}
-      botAvatar="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
-      userAvatar="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
-      floating
-      chatbotResetTimeout={300} // 5 minutos
-    />
+    <>
+      {location.pathname != "/pruebas" && (
+        <ChatBot
+          headerTitle="Ferreteria"
+          steps={steps}
+          botAvatar="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+          userAvatar="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+          floating
+          chatbotResetTimeout={300} // 5 minutos
+        />
+      )}
+    </>
   );
 };
 

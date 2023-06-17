@@ -6,6 +6,8 @@ import ProductPage from "../src/Views/ProductPage/ProductPage.jsx";
 import NavBar from "./Components/NavBar/NavBar.jsx";
 import Chatbot from "./Components/ChatBot/ChatBot.jsx";
 import FormContact from "./Views/Contact/Contact";
+import DataTables from "./Components/DataTable/DataTable";
+import Modal from "./Components/Card/ProductEdit";
 
 function App() {
   return (
@@ -16,10 +18,11 @@ function App() {
           <Route path="/" Component={Home} />
           <Route path="/productos" Component={ProductPage} />
           <Route path="/servicios" Component={FormContact} />
+          <Route path="/admin" Component={DataTables} />
+          <Route path="/pruebas" Component={Modal} />
         </Routes>
         <Chatbot />
       </div>
-
     </BrowserRouter>
   );
 }

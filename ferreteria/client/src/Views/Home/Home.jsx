@@ -7,6 +7,7 @@ import ProductsCarousel from "./ProductsCarousel/ProductsCarousel";
 import FilosofySeccion from "./FilosofySeccion/FilosofySeccion";
 
 const Home = () => {
+
   return (
     <>
       <Carousel />

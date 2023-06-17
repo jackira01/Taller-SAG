@@ -4,8 +4,8 @@ const ContactForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [subject, setSubject] = useState('cotizacion');
   const [otherSubject, setOtherSubject] = useState('');
-  const [email, setEmail] = useState('');
-  const [confirmEmail, setConfirmEmail] = useState('');
+  const [number, setNumber] = useState('');
+  const [confirmNumber, setconfirmNumber] = useState('');
   const [message, setMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -17,23 +17,25 @@ const ContactForm = () => {
       return;
     }
 
-    if (!email) {
-      setErrorMessage('Ingrese un correo electronico');
+    if (!number) {
+      setErrorMessage('Ingrese un numero de whatsApp');
       return;
     }
 
-    if (email !== confirmEmail) {
-      setErrorMessage('Los correos electrónicos no coinciden');
+    if (number !== confirmNumber) {
+      setErrorMessage('Los numeros telefonicos no coinciden');
       return;
     }
 
     // Resto de la lógica para enviar el formulario
 
+    window.location.href = `https://api.whatsapp.com/send?phone=${"+57" + number}&text=${encodeURIComponent(message)}`
+
     // Limpiar los campos del formulario después del envío exitoso
     setSubject('cotizacion');
     setOtherSubject('');
-    setEmail('');
-    setConfirmEmail('');
+    setNumber('');
+    setconfirmNumber('');
     setMessage('');
     setErrorMessage('');
 
@@ -89,29 +91,29 @@ const ContactForm = () => {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className="block text-white-700 text-sm font-bold mb-2">
-            Correo electrónico:
+          <label htmlFor="number" className="block text-white-700 text-sm font-bold mb-2">
+            Numero De WhatsApp:
           </label>
           <input
-            type="email"
-            id="email"
+            type="number"
+            id="number"
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Ingrese su correo electrónico"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Ingrese su numero telefonico"
+            value={number}
+            onChange={(e) => setNumber(e.target.value)}
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="confirmEmail" className="block text-white-700 text-sm font-bold mb-2">
-            Confirmar correo electrónico:
+          <label htmlFor="confirmNumber" className="block text-white-700 text-sm font-bold mb-2">
+            Confirmar Numero De WhatsApp:
           </label>
           <input
-            type="email"
-            id="confirmEmail"
+            type="number"
+            id="confirmNumber"
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Confirme su correo electrónico"
-            value={confirmEmail}
-            onChange={(e) => setConfirmEmail(e.target.value)}
+            placeholder="Confirme su numero telefonico"
+            value={confirmNumber}
+            onChange={(e) => setconfirmNumber(e.target.value)}
           />
         </div>
         <div className="mb-4">
