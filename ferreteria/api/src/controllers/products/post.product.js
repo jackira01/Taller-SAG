@@ -11,7 +11,7 @@ productsCtrl.createNewProduct = async (req, res) => {
     await newProduct.save();
     res.status(200).send(newProduct);
   } catch (error) {
-    res.status(200).send(error.message);
+    res.status(400).send(error.message);
   }
 };
 

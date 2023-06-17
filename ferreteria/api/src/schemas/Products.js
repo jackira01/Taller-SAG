@@ -20,16 +20,6 @@ const products = mongoose.Schema({
   category: {
     type: String,
   },
-  questions: [
-    {
-      question: {
-        type: String,
-      },
-      email: {
-        type: String,
-      },
-    },
-  ],
 });
 
 module.exports = mongoose.model("Products", products);
