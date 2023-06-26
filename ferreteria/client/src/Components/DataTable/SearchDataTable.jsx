@@ -16,7 +16,7 @@ const SearchDataTable = () => {
   return (
     <>
       <Input
-        label="Search"
+        label="Buscar..."
         icon={<MagnifyingGlassIcon className="h-5 w-5" />}
         onChange={handleChangeInput}
         autoComplete="off"

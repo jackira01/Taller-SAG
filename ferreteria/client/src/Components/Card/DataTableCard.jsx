@@ -121,7 +121,7 @@ const DataTableCard = ({ product }) => {
         </td>
 
         <td className="p-4 border-b border-blue-gray-50 dark:border-gray-700">
-          <Tooltip content="Edit Product">
+          <Tooltip content="Editar Producto">
             <IconButton
               onClick={handleButtonClick}
               variant="text"
@@ -131,7 +131,7 @@ const DataTableCard = ({ product }) => {
             </IconButton>
           </Tooltip>
 
-          <Tooltip content="Delete Product">
+          <Tooltip content="Borrar Producto">
             <IconButton
               onClick={handleDeleteClick}
               variant="text"

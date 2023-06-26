@@ -1,24 +1,27 @@
-import React from "react";
+import React from 'react';
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-import "./Carousel.css";
+import './Carousel.css';
+
+import imagen1 from './imagen 1.png';
+import imagen2 from './imagen 2.png';
 
 // import required modules
-import { EffectFade, Navigation, Pagination, Autoplay } from "swiper";
+import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper';
 
 const Carousel = () => {
   return (
     <>
       <Swiper
-        spaceBetween={20}
-        effect={"fade"}
+        spaceBetween={10}
+        effect={'fade'}
         centeredSlides={true}
         autoplay={{
           delay: 4600,
@@ -29,19 +32,13 @@ const Carousel = () => {
           clickable: true,
         }}
         modules={[EffectFade, Navigation, Pagination, Autoplay]}
-        className="mySwiper"
+        className='mySwiper border-4 border-cardLigth dark:border-card m-10'
       >
         <SwiperSlide>
-          <img
-            alt="ejemplo"
-            src="https://th.bing.com/th/id/R.2ed64a9cadc0301c13ff89dee64c3872?rik=fJcWqhs8DWbX1g&riu=http%3a%2f%2fwww.solofondos.com%2fwp-content%2fuploads%2f2016%2f02%2fFondos-wallpapers-4k.jpg&ehk=Cn%2bGjb7DNAZ3CbZR5hPdsAxUED6i%2bJAPKHBgKmCrjZ8%3d&risl=&pid=ImgRaw&r=0"
-          />
+          <img alt='imagen 1' src={imagen1} />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            alt="ejemplo"
-            src="https://th.bing.com/th/id/R.a7089cebf1b1ef32300d9ef81b72f4c0?rik=BAdLIE2cwMeOcQ&riu=http%3a%2f%2fwww.solofondos.com%2fwp-content%2fuploads%2f2015%2f12%2fFondos-de-pantalla-4K.jpg&ehk=RaD5kIcNOaMIFL%2bMTtzDnVxh5PraACmhyduj87aU1%2fQ%3d&risl=&pid=ImgRaw&r=0"
-          />
+          <img alt='imagen 2' src={imagen2} />
         </SwiperSlide>
       </Swiper>
     </>

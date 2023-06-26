@@ -1,67 +1,58 @@
-import { useLocation } from "react-router-dom";
-import ChatBot from "react-simple-chatbot";
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import ChatBot from 'react-simple-chatbot';
 
 const ChatbotComponent = () => {
   const location = useLocation();
   const steps = [
     {
-      id: "intro",
-      message: "Hola! ¿En qué puedo ayudarte?",
-      trigger: "options",
+      id: 'intro',
+      message: 'Hola! ¿En qué puedo ayudarte?',
+      trigger: 'options',
     },
     {
-      id: "options",
+      id: 'options',
       options: [
         {
-          value: "calendar",
-          label: "¿Cual es el horario de atencion?",
-          trigger: "calendar",
+          value: 'calendar',
+          label: '¿Cual es el horario de atencion?',
+          trigger: 'calendar',
         },
         {
-          value: "advice",
+          value: 'advice',
           label:
-            "¿Dónde me puedo comunicar para tener una asesoría personalizada?",
-          trigger: "advice",
-        },
-        {
-          value: "other",
-          label: "Otra cosa",
-          trigger: "other",
+            '¿Dónde me puedo comunicar para tener una asesoría personalizada?',
+          trigger: 'advice',
         },
       ],
     },
     {
-      id: "calendar",
+      id: 'calendar',
       message:
-        "El PBX +57 601 875 9100 está disponible para atender sus inquietudes de 7 am a 5 pm de lunes a viernes y sábados de 7 am a 12 m.",
-      trigger: "end",
+        'estamos disponibles para atender sus inquietudes de 7 Am a 6 Pm de lunes a viernes y sábados de 7 Am a 12 Pm.',
+      trigger: 'end',
     },
     {
-      id: "advice",
+      id: 'advice',
       message:
-        "Usted puede comunicarse con nuestros asesores especializados al PBX  +57 601 875 9100 o  por medio de Whatsapp al 313 455 6542, donde con gusto atenderemos su requerimientos.",
-      trigger: "end",
+        'Usted puede comunicarse con nosotros por medio de Whatsapp al +57 311 8426746, donde con gusto atenderemos sus requerimientos.',
+      trigger: 'end',
     },
     {
-      id: "other",
-      message: "Lo siento, no puedo ayudarte con eso.",
-      trigger: "options",
-    },
-    {
-      id: "end",
-      message: "¿Puedo ayudarte con algo más?",
-      trigger: "options",
+      id: 'end',
+      message: '¿Puedo ayudarte con algo más?',
+      trigger: 'options',
     },
   ];
 
   return (
     <>
-      {location.pathname != "/pruebas" && (
+      {location.pathname != '/login' && (
         <ChatBot
-          headerTitle="Ferreteria"
+          headerTitle='Preguntas Frecuentes'
           steps={steps}
-          botAvatar="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
-          userAvatar="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+          botAvatar='https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'
+          userAvatar='https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'
           floating
           chatbotResetTimeout={300} // 5 minutos
         />
