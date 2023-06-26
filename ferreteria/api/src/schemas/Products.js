@@ -17,25 +17,9 @@ const products = mongoose.Schema({
   brand: {
     type: String,
   },
-  model: {
-    type: String,
-  },
-  stock: {
-    type: Number,
-  },
   category: {
     type: String,
   },
-  questions: [
-    {
-      question: {
-        type: String,
-      },
-      email: {
-        type: String,
-      },
-    },
-  ],
 });
 
 module.exports = mongoose.model("Products", products);
