@@ -79,7 +79,7 @@ const ModalEdit = ({ isOpen, onClose, product }) => {
       >
         <div className="bg-white dark:bg-gray-800 rounded-md shadow-lg p-6 w-full md:w-2/3 lg:w-1/2">
           <div className="flex justify-between mb-4">
-            <h2 className="text-lg font-bold">Producto actual</h2>
+            <h2 className="text-lg dark:text-white-500 font-bold">Producto actual</h2>
             <button
               className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 focus:outline-none"
               onClick={onClose}
@@ -107,12 +107,12 @@ const ModalEdit = ({ isOpen, onClose, product }) => {
                 {/* Contenido del ProductCard */}
                 <img src={product.img} alt={name} className="w-full mb-2" />
                 <h3 className="text-md font-semibold mb-1">{product.name}</h3>
+                <p className="text-sm text-gray-500 mb-2">Precio: ${product.price}</p>
+                <p className="text-md text-gray-500 mb-2">Marca: {product.brand}</p>
+                <p className="text-md text-gray-500 mb-2">Categoria: {product.category}</p>
                 <p className="text-md text-gray-500 mb-2">
-                  {product.description}
+                  Descripcion: {product.description}
                 </p>
-                <p className="text-md text-gray-500 mb-2">{product.brand}</p>
-                <p className="text-md text-gray-500 mb-2">{product.category}</p>
-                <p className="text-sm text-gray-500 mb-2">${product.price}</p>
               </div>
             </div>
             <div className="w-full md:w-1/2 pl-6">

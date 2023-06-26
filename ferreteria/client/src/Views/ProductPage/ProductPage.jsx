@@ -1,17 +1,15 @@
-import React, { useEffect } from "react";
-import Pagination from "../../Components/Paginate/Paginate.jsx";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import ProductCard from "../../Components/Card/ProductCard.jsx";
-import { fetchProducts } from "../../redux/productThunk.js/productThunk.js";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../../redux/productThunk.js/productThunk.js';
+import ErrorCard from '../../Components/ErrorCard/ErrorCard.jsx';
+import CardsTamplate from './CardsTemplate.jsx';
+import Loader from '../../Components/Loader/Loader.jsx';
 
 const ProductPage = () => {
   const dispatch = useDispatch();
   const { productList } = useSelector((state) => state.product);
-  const [currentPage, setcurrentPage] = useState(1);
-  const indexLastCard = currentPage * 6;
-  const indexfirstCard = indexLastCard - 6;
-  const cardsCurrent = productList.slice(indexfirstCard, indexLastCard);
+  const { search } = useSelector((state) => state.filter);
+  const { error } = useSelector((state) => state.error);
 
   useEffect(() => {
     if (!productList.length) {
@@ -20,22 +18,16 @@ const ProductPage = () => {
   });
 
   return (
-    <div class="justify-center w-full mt-4 mb-6">
-      <Pagination
-        maxCards={productList}
-        cardsPerPage={6}
-        currentPage={currentPage}
-        setcurrentPage={setcurrentPage}
-      />
-      <div class=" flex justify-center w-full mt-4 mb-6">
-        <div class="grid grid-cols-6 gap-4">
-          {cardsCurrent.map((card) => (
-            <div class="col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2">
-              <ProductCard product={card} />
-            </div>
-          ))}
-        </div>
-      </div>
+    <div className='justify-center w-full'>
+      {!productList.length ? (
+        <Loader />
+      ) : error ? (
+        <ErrorCard message={error} />
+      ) : search.length ? (
+        <CardsTamplate array={search} />
+      ) : (
+        <CardsTamplate array={productList} />
+      )}
     </div>
   );
 };

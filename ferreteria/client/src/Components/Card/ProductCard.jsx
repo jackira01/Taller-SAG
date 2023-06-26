@@ -13,18 +13,18 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="w-80 h-80 rounded overflow-hidden shadow-lg hover:shadow-xl dark:bg-gray-800">
-      <div className="aspect-w-3 aspect-h-2">
+    <div className="w-80 h-80 rounded overflow-hidden shadow-lg hover:shadow-xl bg-cardLigth dark:bg-card">
+      <div className="aspect-w-3 aspect-h-2 rounded-md">
         <img
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-full rounded-2xl p-2"
           src={product.img}
-          alt="Product"
+          alt={product.name}
         />
       </div>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 overflow-hidden overflow-ellipsis whitespace-nowrap">{product.name}</div>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-secundaryLigth dark:bg-secundary hover:bg-accentColor text-white font-bold py-2 px-4 rounded"
           onClick={handleButtonClick}
         >
           Ver más

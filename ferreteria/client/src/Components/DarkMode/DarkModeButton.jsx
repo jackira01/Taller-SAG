@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import "./Styles.css";
+import React, { useState } from 'react';
+import './Styles.css';
 
 function DarkModeButton() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
+    document.documentElement.classList.toggle('dark');
   };
 
   return (
-    <div id="page-content">
-      <label class="switch">
-        <input type="checkbox" onClick={toggleDarkMode} />
-        <span class="slider"></span>
+    <div id='page-content'>
+      <label className='switch'>
+        <input type='checkbox' onClick={toggleDarkMode} />
+        <span className='slider'></span>
       </label>
     </div>
   );

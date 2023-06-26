@@ -1,10 +1,7 @@
-import axios from "axios";
-import {
-  setError,
-  setProducts,
-  setSearch,
-  setSearchDataTable,
-} from "../slices.js/productsSlice";
+import axios from 'axios';
+import { setProducts } from '../slices.js/productsSlice';
+import { setSearch, setSearchDataTable } from '../slices.js/filterSlice';
+import { setError } from '../slices.js/errorSlice';
 
 const { REACT_APP_API_URL } = process.env;
 
@@ -69,8 +66,9 @@ export function searchProduct(array, string) {
 
       if (productsList.length) {
         dispatch(setSearch(productsList));
+        dispatch(setError(''));
       } else {
-        dispatch(setError("No Se Encontraron Productos"));
+        dispatch(setError('No Se Encontraron Productos'));
       }
     } catch (error) {
       dispatch(setError(error.message));
@@ -89,8 +87,9 @@ export function searchProductDataTable(array, string) {
 
       if (productsList.length) {
         dispatch(setSearchDataTable(productsList));
+        dispatch(setError(''));
       } else {
-        dispatch(setError("No Se Encontraron Productos"));
+        dispatch(setError('No Se Encontraron Productos'));
       }
     } catch (error) {
       dispatch(setError(error.message));

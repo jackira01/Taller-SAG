@@ -41,15 +41,7 @@ const CreateFormModal = ({ isOpen, onClose, onSubmit }) => {
 
   const handleSubmit = () => {
     setIsSubmitting(true);
-    /* onSubmit({ img, name, price: Number(price), category, brand, description }); */
-    console.log({
-      img,
-      name,
-      price: Number(price),
-      category,
-      brand,
-      description,
-    });
+    onSubmit({ img, name, price: Number(price), category, brand, description });
     setIsSubmitting(false);
   };
 
