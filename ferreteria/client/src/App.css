@@ -1,6 +1,36 @@
+/* Global styles to prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+/* Root container for sticky footer layout */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Main content area that grows to fill available space */
+.main-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
+}
+
 .App {
   text-align: center;
   margin-top: 80px;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .App-logo {
