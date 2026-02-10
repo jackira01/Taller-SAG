@@ -19,28 +19,30 @@ import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper';
 const Carousel = () => {
   return (
     <>
-      <Swiper
-        spaceBetween={10}
-        effect={'fade'}
-        centeredSlides={true}
-        autoplay={{
-          delay: 4600,
-          disableOnInteraction: false,
-        }}
-        navigation={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[EffectFade, Navigation, Pagination, Autoplay]}
-        className='mySwiper border-4 border-cardLigth dark:border-card m-10'
-      >
-        <SwiperSlide>
-          <img alt='imagen 1' src={imagen1} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img alt='imagen 2' src={imagen2} />
-        </SwiperSlide>
-      </Swiper>
+      <div className='px-4 py-4 md:px-8 md:py-6 lg:px-10 max-w-full overflow-hidden'>
+        <Swiper
+          spaceBetween={10}
+          effect={'fade'}
+          centeredSlides={true}
+          autoplay={{
+            delay: 4600,
+            disableOnInteraction: false,
+          }}
+          navigation={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[EffectFade, Navigation, Pagination, Autoplay]}
+          className='mySwiper border-4 border-cardLigth dark:border-card'
+        >
+          <SwiperSlide>
+            <img alt='imagen 1' src={imagen1} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img alt='imagen 2' src={imagen2} />
+          </SwiperSlide>
+        </Swiper>
+      </div>
     </>
   );
 };

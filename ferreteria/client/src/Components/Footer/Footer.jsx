@@ -7,15 +7,33 @@ const Footer = () => {
 
   return (
     <>
-      {location.pathname != '/login' && (
-        <footer className='bg-navbarLigth dark:bg-card bg-navbarLigth text-white flex flex-col bottom-0'>
-          <div className='flex-grow'>
-            <ItemsContainer />
-          </div>
-          <div className='w-1/2 mx-auto border-t border-gray-400'></div>
-          <div className='text-center mx-auto pt-4 text-gray-400 text-sm pb-8'>
-            <span>© 2020 Appy. All rights reserved.</span>
-            <span>Terms · Privacy Policy</span>
+      {location.pathname !== '/login' && (
+        <footer className='bg-navbarLigth dark:bg-card text-white mt-auto w-full'>
+          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+            {/* Main Footer Content */}
+            <div className='py-8 md:py-12'>
+              <ItemsContainer />
+            </div>
+            
+            {/* Divider */}
+            <div className='border-t border-gray-600'></div>
+            
+            {/* Footer Bottom */}
+            <div className='py-6'>
+              <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
+                <div className='text-gray-400 text-sm'>
+                  <span>© {new Date().getFullYear()} Ferretería Taller SAG. Todos los derechos reservados.</span>
+                </div>
+                <div className='flex gap-6 text-gray-400 text-sm'>
+                  <a href='#' className='hover:text-white transition-colors duration-300'>
+                    Términos de Servicio
+                  </a>
+                  <a href='#' className='hover:text-white transition-colors duration-300'>
+                    Política de Privacidad
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </footer>
       )}

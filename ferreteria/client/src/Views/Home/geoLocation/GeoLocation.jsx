@@ -17,12 +17,12 @@ const iconUbication = new L.icon({
 const GeoLocation = () => {
   const position = [4.440879454561967, -75.23405672584052];
   return (
-    <div className='m-5'>
+    <div className='px-4 py-8 md:px-8 lg:px-20 max-w-full overflow-hidden'>
       <div>
         <h2 className='text-3xl font-bold text-center dark:text-text text-black p-2 mt-5'>
           Visitanos Aquí!
         </h2>
-        <div className='border-4 border-cardLigth dark:border-card'>
+        <div className='border-4 border-cardLigth dark:border-card max-w-full'>
           <MapContainer
             className='mapa'
             center={position}
