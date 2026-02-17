@@ -6,7 +6,7 @@ import { setError } from '../slices.js/errorSlice';
 const { REACT_APP_API_URL } = process.env;
 
 export const fetchProducts = () => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
       const response = await axios.get(`${REACT_APP_API_URL}/products`);
       dispatch(setProducts(response.data));
@@ -19,7 +19,7 @@ export const fetchProducts = () => {
 };
 
 export const editProduct = (id, data) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
       await axios.put(`${REACT_APP_API_URL}/products/${id}`, data);
 
@@ -33,7 +33,7 @@ export const editProduct = (id, data) => {
 };
 
 export const createProduct = (data) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
       await axios.post(`${REACT_APP_API_URL}/products`, data);
 
@@ -47,7 +47,7 @@ export const createProduct = (data) => {
 };
 
 export const deleteProduct = (id) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
       await axios.delete(`${REACT_APP_API_URL}/products/${id}`);
 
@@ -61,7 +61,7 @@ export const deleteProduct = (id) => {
 };
 
 export function searchProduct(array, string) {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
       const productsList = array.filter((product) => {
         if (product.name.toLowerCase().includes(string.toLowerCase())) {
@@ -82,7 +82,7 @@ export function searchProduct(array, string) {
 }
 
 export function searchProductDataTable(array, string) {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
       const productsList = array.filter((product) => {
         if (product.name.toLowerCase().includes(string.toLowerCase())) {

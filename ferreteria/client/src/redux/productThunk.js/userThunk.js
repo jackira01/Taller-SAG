@@ -5,7 +5,7 @@ import { setError } from '../slices.js/errorSlice';
 const { REACT_APP_API_URL } = process.env;
 
 export const loginVerify = (data) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
       const response = await axios.post(`${REACT_APP_API_URL}/users/login`, data);
       if (response.data.success) {
@@ -27,7 +27,7 @@ export const loginVerify = (data) => {
 };
 
 export const registerUser = (data) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
       const response = await axios.post(`${REACT_APP_API_URL}/users/register`, data);
       if (response.data.success) {
