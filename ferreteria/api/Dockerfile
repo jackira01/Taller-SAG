@@ -5,9 +5,6 @@ FROM node:18-alpine AS base
 
 WORKDIR /app
 
-# Instalar utilidades necesarias
-RUN apk add --no-cache netcat-openbsd
-
 # Habilitar corepack para usar pnpm
 RUN corepack enable
 
