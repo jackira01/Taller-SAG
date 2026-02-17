@@ -5,22 +5,22 @@ const usersCtrl = {};
 
 usersCtrl.userRegister = async (req, res) => {
   const { user, password, passwordConfirm } = req.body;
-  
+
   try {
     // Validar que la contraseña y su confirmación sean iguales
     if (password !== passwordConfirm) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Las contraseñas no coinciden' 
+      return res.status(400).json({
+        success: false,
+        message: 'Las contraseñas no coinciden'
       });
     }
 
     // Validar que el usuario no exista
     const existingUser = await Users.findOne({ user });
     if (existingUser) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'El usuario ya existe' 
+      return res.status(400).json({
+        success: false,
+        message: 'El usuario ya existe'
       });
     }
 
@@ -36,17 +36,17 @@ usersCtrl.userRegister = async (req, res) => {
 
     await newUser.save();
 
-    res.status(201).json({ 
-      success: true, 
+    res.status(201).json({
+      success: true,
       message: 'Usuario registrado exitosamente',
       user: newUser.user,
       rol: newUser.rol,
       isLoggedIn: false,
     });
   } catch (error) {
-    res.status(500).json({ 
-      success: false, 
-      message: error.message 
+    res.status(500).json({
+      success: false,
+      message: error.message
     });
   }
 };
