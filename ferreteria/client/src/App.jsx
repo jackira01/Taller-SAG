@@ -3,7 +3,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../src/Views/Home/Home.jsx';
 import ProductPage from '../src/Views/ProductPage/ProductPage.jsx';
+import Dashboard from '../src/Views/Dashboard/Dashboard.jsx';
 import NavBar from './Components/NavBar/NavBar.jsx';
+import ProtectedRoute from './Components/ProtectedRoute.jsx';
 import Chatbot from './Components/ChatBot/ChatBot.jsx';
 import FormContact from './Views/Contact/Contact';
 import LoginPage from './Components/Login/LoginPage';
@@ -20,6 +22,14 @@ function App() {
             <Route path='/productos' element={<ProductPage />} />
             <Route path='/servicios' element={<FormContact />} />
             <Route path='/login' element={<LoginPage />} />
+            <Route
+              path='/dashboard'
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
             <Route path='*' element={<Navigate to='/inicio' />} />
           </Routes>
           <Chatbot />
@@ -31,3 +41,4 @@ function App() {
 }
 
 export default App;
+

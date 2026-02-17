@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
 import { setAdminStatus } from '../slices.js/AdminSlice';
 import { setError } from '../slices.js/errorSlice';
 
@@ -8,18 +7,50 @@ const { REACT_APP_API_URL } = process.env;
 export const loginVerify = (data) => {
   return async function(dispatch) {
     try {
-      const response = await axios.post(`${REACT_APP_API_URL}/users`, data);
-      dispatch(setAdminStatus(response.data));
-      if (response.data) {
-        // Lógica adicional en caso de que sea un administrador
-        // Redirigir al usuario a una ruta específica en caso de éxito
-        return <Navigate to='/ruta-de-redireccion' />;
+      const response = await axios.post(`${REACT_APP_API_URL}/users/login`, data);
+      if (response.data.success) {
+        dispatch(setAdminStatus({
+          isLoggedIn: true,
+          user: response.data.user,
+          rol: response.data.rol,
+        }));
+        return true;
       } else {
-        // En caso de no ser un administrador, no realizar ninguna redirección
+        dispatch(setError(response.data.message));
         return false;
       }
     } catch (error) {
-      dispatch(setError(error.message));
+      dispatch(setError(error.response?.data?.message || error.message));
+      return false;
     }
   };
 };
+
+export const registerUser = (data) => {
+  return async function(dispatch) {
+    try {
+      const response = await axios.post(`${REACT_APP_API_URL}/users/register`, data);
+      if (response.data.success) {
+        dispatch(setError(''));
+        return {
+          success: true,
+          message: response.data.message,
+        };
+      } else {
+        dispatch(setError(response.data.message));
+        return {
+          success: false,
+          message: response.data.message,
+        };
+      }
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message;
+      dispatch(setError(errorMessage));
+      return {
+        success: false,
+        message: errorMessage,
+      };
+    }
+  };
+};
+

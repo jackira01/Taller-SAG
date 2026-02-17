@@ -10,8 +10,10 @@ export const fetchProducts = () => {
     try {
       const response = await axios.get(`${REACT_APP_API_URL}/products`);
       dispatch(setProducts(response.data));
+      dispatch(setError(''));
     } catch (error) {
       dispatch(setError(error.message));
+      dispatch(setProducts([]));
     }
   };
 };
@@ -23,6 +25,7 @@ export const editProduct = (id, data) => {
 
       const response = await axios.get(`${REACT_APP_API_URL}/products`);
       dispatch(setProducts(response.data));
+      dispatch(setError(''));
     } catch (error) {
       dispatch(setError(error.message));
     }
@@ -36,6 +39,7 @@ export const createProduct = (data) => {
 
       const response = await axios.get(`${REACT_APP_API_URL}/products`);
       dispatch(setProducts(response.data));
+      dispatch(setError(''));
     } catch (error) {
       dispatch(setError(error.message));
     }
@@ -49,6 +53,7 @@ export const deleteProduct = (id) => {
 
       const response = await axios.get(`${REACT_APP_API_URL}/products`);
       dispatch(setProducts(response.data));
+      dispatch(setError(''));
     } catch (error) {
       dispatch(setError(error.message));
     }
@@ -68,7 +73,7 @@ export function searchProduct(array, string) {
         dispatch(setSearch(productsList));
         dispatch(setError(''));
       } else {
-        dispatch(setError('No Se Encontraron Productos'));
+        dispatch(setError('No se encontraron productos'));
       }
     } catch (error) {
       dispatch(setError(error.message));
@@ -89,10 +94,11 @@ export function searchProductDataTable(array, string) {
         dispatch(setSearchDataTable(productsList));
         dispatch(setError(''));
       } else {
-        dispatch(setError('No Se Encontraron Productos'));
+        dispatch(setError('No se encontraron productos'));
       }
     } catch (error) {
       dispatch(setError(error.message));
     }
   };
 }
+
