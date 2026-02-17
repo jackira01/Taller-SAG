@@ -195,8 +195,10 @@ heroku stack:set container
 # 4. Crear Dockerfile.heroku
 FROM node:18-alpine
 WORKDIR /app
+# Habilitar corepack para usar pnpm
+RUN corepack enable
 COPY package*.json pnpm-lock.yaml ./
-RUN npm install -g pnpm && pnpm install --prod
+RUN pnpm install --prod
 COPY . .
 EXPOSE $PORT
 CMD ["node", "index.js"]
