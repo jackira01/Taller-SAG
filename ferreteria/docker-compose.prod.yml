@@ -1,0 +1,103 @@
+version: '3.8'
+
+services:
+  # ========================================
+  # MongoDB Database (Production)
+  # ========================================
+  mongodb:
+    image: mongo:6.0-alpine
+    container_name: tallersag-mongodb-prod
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-changeme}
+      MONGO_INITDB_DATABASE: tallersag
+    volumes:
+      - mongodb_data_prod:/data/db
+      - mongodb_config_prod:/data/configdb
+    networks:
+      - tallersag-network-prod
+    restart: always
+    # No exponer puerto públicamente - solo acceso interno
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    labels:
+      - "com.tallersag.description=MongoDB Production Database"
+
+  # ========================================
+  # API (Node.js + Express) - Production
+  # ========================================
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+      target: production
+    container_name: tallersag-api-prod
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      MONGODB_URI: mongodb://${MONGO_ROOT_USER:-admin}:${MONGO_ROOT_PASSWORD:-changeme}@mongodb:27017/tallersag?authSource=admin&retryWrites=true&w=majority
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_PORT: ${MAIL_PORT}
+      MAIL_SECURE: ${MAIL_SECURE}
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASS: ${MAIL_PASS}
+      JWT_SECRET: ${JWT_SECRET}
+    # No exponer puerto directamente - usar reverse proxy (Nginx)
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - tallersag-network-prod
+    restart: always
+    # Limitar recursos
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    # Health check
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "com.tallersag.description=API Production Server"
+      - "com.tallersag.version=1.0.0"
+
+  # ========================================
+  # Nginx Reverse Proxy (Optional)
+  # ========================================
+  nginx:
+    image: nginx:alpine
+    container_name: tallersag-nginx-prod
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - api
+    networks:
+      - tallersag-network-prod
+    restart: always
+    labels:
+      - "com.tallersag.description=Nginx Reverse Proxy"
+
+volumes:
+  mongodb_data_prod:
+    driver: local
+  mongodb_config_prod:
+    driver: local
+
+networks:
+  tallersag-network-prod:
+    driver: bridge

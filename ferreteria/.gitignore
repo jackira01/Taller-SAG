@@ -1,0 +1,93 @@
+# ============================================
+# Environment & Secrets
+# ============================================
+.env
+.env.local
+.env.prod
+.env.*.local
+.env.prod.local
+.env.development.local
+.env.test.local
+
+# ============================================
+# IDE & Editor
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.AppleDouble
+.LSOverride
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+
+# ============================================
+# Node.js
+# ============================================
+node_modules/
+npm-debug.log
+npm-debug.log.*
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+pnpm-error.log
+.pnpm-store/
+
+# ============================================
+# Docker
+# ============================================
+.docker/
+docker-compose.override.yml
+.dockerignore.local
+
+# ============================================
+# Build & Deployment
+# ============================================
+dist/
+build/
+coverage/
+.cache/
+out/
+
+# ============================================
+# Database & Backups
+# ============================================
+backups/
+*.sql
+*.sqlite
+*.db
+.mongo/
+mongodb_data/
+
+# ============================================
+# Logs
+# ============================================
+logs/
+*.log
+*.log.*
+
+# ============================================
+# OS
+# ============================================
+Thumbs.db
+.DS_Store*
+ehthumbs.db
+.env.example.local
+
+# ============================================
+# Testing
+# ============================================
+.nyc_output/
+coverage/
+.mocharc.json.local
+
+# ============================================
+# CI/CD
+# ============================================
+.github/workflows/.env
+.gitlab-ci.local.yml
+.travis.local.yml

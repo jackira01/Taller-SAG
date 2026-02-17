@@ -1,0 +1,25 @@
+node_modules
+npm - debug.log
+  .git
+  .gitignore
+  .env
+  .env.local
+  .DS_Store
+  .vscode
+  .idea
+  .eslintrc
+  .prettierrc
+README.md
+tests
+jest.config.js
+  .editorconfig
+dist
+build
+coverage
+  .github
+  .gitlab
+  .gitlab - ci.yml
+    .travis.yml
+Dockerfile
+docker - compose *.yml
+  .docker
