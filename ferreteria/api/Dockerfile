@@ -8,6 +8,9 @@ WORKDIR /app
 # Instalar utilidades necesarias
 RUN apk add --no-cache netcat-openbsd
 
+# Habilitar corepack para usar pnpm
+RUN corepack enable
+
 # Copiar archivos de dependencias
 COPY package*.json pnpm-lock.yaml* ./
 
@@ -15,9 +18,6 @@ COPY package*.json pnpm-lock.yaml* ./
 # Development Stage
 # ============================================
 FROM base AS development
-
-# Instalar pnpm globalmente
-RUN npm install -g pnpm
 
 # Instalar todas las dependencias (incluyendo devDependencies)
 RUN pnpm install
@@ -40,9 +40,6 @@ CMD ["pnpm", "start"]
 # Production Stage
 # ============================================
 FROM base AS production
-
-# Instalar pnpm globalmente
-RUN npm install -g pnpm
 
 # Instalar solo dependencias de producción
 RUN pnpm install --prod

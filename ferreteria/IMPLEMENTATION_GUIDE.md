@@ -108,13 +108,13 @@ Esto creará un usuario admin con:
 **Backend:**
 ```bash
 cd api
-npm start
+pnpm start
 ```
 
 **Frontend:**
 ```bash
 cd client
-npm start
+pnpm start
 ```
 
 ## 📝 Flujo de Uso
