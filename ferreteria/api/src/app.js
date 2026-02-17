@@ -2,10 +2,11 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const cors = require('cors');
+const getCorsOptions = require('./config/cors');
 const products = require('./routes/products.router');
 const categories = require('./routes/categories.router');
 const users = require('./routes/users.router');
-const cors = require('cors');
 
 require('./db.js');
 
@@ -17,17 +18,17 @@ server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(morgan('dev'));
-server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-  next();
+server.use(cors(getCorsOptions()));
+
+// Endpoint de bienvenida
+server.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: '🚀 API Taller SAG funcionando correctamente',
+    version: '1.0.0',
+    timestamp: new Date().toISOString(),
+  });
 });
-server.use(cors());
 
 server.use('/products', products);
 server.use('/categories', categories);
