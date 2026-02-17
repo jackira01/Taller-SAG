@@ -14,7 +14,7 @@ import {
   createProduct,
   fetchProducts,
 } from '../../redux/productThunk.js/productThunk';
-import { setAdminStatus } from '../../redux/slices.js/AdminSlice';
+import { logout } from '../../redux/slices.js/AdminSlice';
 import DataTableCardTemplate from './DataTableCardTemplate';
 import Loader from '../Loader/Loader';
 import ErrorCard from '../ErrorCard/ErrorCard';
@@ -31,16 +31,16 @@ const TABLE_HEAD = [
 
 const DataTable = () => {
   const dispatch = useDispatch();
-  const { productList } = useSelector((state) => state.product);
+  const { productList, isLoading } = useSelector((state) => state.product);
   const { searchDataTableFilter } = useSelector((state) => state.filter);
-  const { error } = useSelector((state) => state.error);
+  const { errorMessage } = useSelector((state) => state.error);
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    if (!productList.length) {
+    if (productList.length === 0 && isLoading) {
       dispatch(fetchProducts());
     }
-  });
+  }, []);
 
   const handleOpenModal = () => {
     setModalOpen(true);
@@ -51,14 +51,14 @@ const DataTable = () => {
   };
 
   const handleLogout = () => {
-    dispatch(setAdminStatus(false));
+    dispatch(logout());
   };
 
   const handleCreateFormSubmit = (data) => {
-    // Aquí puedes hacer algo con los datos del formulario
     dispatch(createProduct(data));
     handleCloseModal();
   };
+
   return (
     <Card className='h-full w-full'>
       <CardHeader floated={false} shadow={false} className='rounded-none'>
@@ -95,12 +95,12 @@ const DataTable = () => {
               {TABLE_HEAD.map((head, index) => (
                 <th
                   key={index}
-                  className='cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50'
+                  className='cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50 dark:bg-blue-gray-900 dark:border-blue-gray-700'
                 >
                   <Typography
                     variant='small'
                     color='blue-gray'
-                    className='flex items-center justify-between gap-2 font-normal leading-none opacity-70'
+                    className='flex items-center justify-between gap-2 font-normal leading-none opacity-70 dark:text-gray-300'
                   >
                     {head}{' '}
                     {index !== TABLE_HEAD.length - 1 && (
@@ -111,27 +111,52 @@ const DataTable = () => {
               ))}
             </tr>
           </thead>
-          {!productList.length ? (
-            <tbody>
+          <tbody>
+            {isLoading ? (
               <tr>
-                <td>
+                <td colSpan={TABLE_HEAD.length} className='text-center py-8'>
                   <Loader />
                 </td>
               </tr>
-            </tbody>
-          ) : error ? (
-            <tbody>
+            ) : errorMessage ? (
               <tr>
-                <td>
-                  <ErrorCard message={error} />
+                <td colSpan={TABLE_HEAD.length}>
+                  <ErrorCard message={errorMessage} />
                 </td>
               </tr>
-            </tbody>
-          ) : searchDataTableFilter.length ? (
-            <DataTableCardTemplate array={searchDataTableFilter} />
-          ) : (
-            <DataTableCardTemplate array={productList} />
-          )}
+            ) : productList.length === 0 ? (
+              <tr>
+                <td colSpan={TABLE_HEAD.length} className='text-center py-12'>
+                  <div className='flex flex-col items-center gap-4'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      className='h-16 w-16 text-gray-300 dark:text-gray-600'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      stroke='currentColor'
+                    >
+                      <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth={1.5}
+                        d='M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4'
+                      />
+                    </svg>
+                    <Typography variant='h6' className='dark:text-gray-300'>
+                      No hay productos registrados
+                    </Typography>
+                    <Typography variant='body2' color='gray' className='dark:text-gray-400'>
+                      Haz clic en "Agregar Producto" para crear el primer producto
+                    </Typography>
+                  </div>
+                </td>
+              </tr>
+            ) : searchDataTableFilter.length ? (
+              <DataTableCardTemplate array={searchDataTableFilter} />
+            ) : (
+              <DataTableCardTemplate array={productList} />
+            )}
+          </tbody>
         </table>
       </CardBody>
       <CreateFormModal
@@ -144,3 +169,4 @@ const DataTable = () => {
 };
 
 export default DataTable;
+

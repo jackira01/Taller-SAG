@@ -1,26 +1,34 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import Menu from './Menu/Menu.jsx';
 import DarkModeButton from '../DarkMode/DarkModeButton.jsx';
 import { IconButton, Tooltip } from '@material-tailwind/react';
-import { UserIcon } from '@heroicons/react/24/outline';
+import { UserIcon, ArrowRightOnRectangleIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
+import { logout } from '../../redux/slices.js/AdminSlice';
 
 import logo from './Taller SAG logo.png';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const location = useLocation();
+  const dispatch = useDispatch();
+  const { isLoggedIn, rol } = useSelector((state) => state.admin);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <>
       <nav className='border-gray-200 bg-navbarLigth dark:bg-navBar fixed top-0 w-full z-50'>
         <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
           <Link to='/inicio' className='flex items-center'>
-            <img src={logo} className='h-10 mr-3' alt='Flowbite Logo' />
+            <img src={logo} className='h-10 mr-3' alt='Taller SAG Logo' />
           </Link>
           <div className='hidden md:block '>
             <Menu />
@@ -50,15 +58,37 @@ const NavBar = () => {
             <Menu />
           </div>
 
-          {location.pathname != '/login' && (
-            <Link to='/login'>
-              <Tooltip content='INGRESAR'>
-                <IconButton variant='text' color='blue-gray'>
-                  <UserIcon className='h-6 w-6' />
-                </IconButton>
-              </Tooltip>
-            </Link>
-          )}
+          <div className='flex items-center gap-2'>
+            {isLoggedIn && rol === 'admin' && (
+              <Link to='/dashboard'>
+                <Tooltip content='DASHBOARD'>
+                  <IconButton variant='text' color='blue-gray'>
+                    <Cog6ToothIcon className='h-6 w-6' />
+                  </IconButton>
+                </Tooltip>
+              </Link>
+            )}
+
+            {isLoggedIn ? (
+              <button onClick={handleLogout}>
+                <Tooltip content='CERRAR SESIÓN'>
+                  <IconButton variant='text' color='blue-gray'>
+                    <ArrowRightOnRectangleIcon className='h-6 w-6' />
+                  </IconButton>
+                </Tooltip>
+              </button>
+            ) : (
+              location.pathname !== '/login' && (
+                <Link to='/login'>
+                  <Tooltip content='INGRESAR'>
+                    <IconButton variant='text' color='blue-gray'>
+                      <UserIcon className='h-6 w-6' />
+                    </IconButton>
+                  </Tooltip>
+                </Link>
+              )
+            )}
+          </div>
 
           <DarkModeButton />
         </div>
@@ -68,3 +98,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+

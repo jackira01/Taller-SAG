@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  admin: false,
+  isLoggedIn: false,
+  user: null,
+  rol: null,
 };
 
 export const adminSlice = createSlice({
@@ -9,9 +11,17 @@ export const adminSlice = createSlice({
   initialState,
   reducers: {
     setAdminStatus: (state, { payload }) => {
-      state.admin = payload;
+      state.isLoggedIn = payload.isLoggedIn;
+      state.user = payload.user;
+      state.rol = payload.rol;
+    },
+    logout: (state) => {
+      state.isLoggedIn = false;
+      state.user = null;
+      state.rol = null;
     },
   },
 });
 
-export const { setAdminStatus } = adminSlice.actions;
+export const { setAdminStatus, logout } = adminSlice.actions;
+
