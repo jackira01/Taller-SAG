@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # ========================================
+  # MongoDB Database
+  # ========================================
+  mongodb:
+    image: mongo:6.0-alpine
+    container_name: tallersag-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: tallersag
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    networks:
+      - tallersag-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ========================================
+  # API (Node.js + Express)
+  # ========================================
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: tallersag-api
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: development
+      PORT: 3001
+      MONGODB_URI: mongodb://mongodb:27017/tallersag?retryWrites=true&w=majority
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_PORT: ${MAIL_PORT}
+      MAIL_SECURE: ${MAIL_SECURE}
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASS: ${MAIL_PASS}
+    volumes:
+      # Hot-reload del código fuente
+      - ./src:/app/src
+      - ./index.js:/app/index.js
+      # Excluir node_modules para evitar conflictos
+      - /app/node_modules
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - tallersag-network
+    command: pnpm start
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:
+    driver: local
+  mongodb_config:
+    driver: local
+
+networks:
+  tallersag-network:
+    driver: bridge
