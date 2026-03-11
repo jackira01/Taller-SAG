@@ -11,6 +11,12 @@ import { useDispatch } from "react-redux";
 import ConfirmationModal from "./ConfirmationModal";
 import { deleteProduct } from "../../redux/productThunk.js/productThunk";
 
+// Función para truncar texto
+const truncateText = (text, maxLength = 50) => {
+  if (!text) return "";
+  return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
+};
+
 const DataTableCard = ({ product }) => {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
@@ -57,8 +63,9 @@ const DataTableCard = ({ product }) => {
                 variant="small"
                 color="blue-gray"
                 className="font-normal"
+                title={product.name}
               >
-                {product.name || ""}
+                {truncateText(product.name, 20)}
               </Typography>
             </div>
           </div>
@@ -85,8 +92,9 @@ const DataTableCard = ({ product }) => {
                 variant="small"
                 color="blue-gray"
                 className="font-normal"
+                title={product.description}
               >
-                {product.description || ""}
+                {truncateText(product.description, 30)}
               </Typography>
             </div>
           </div>
@@ -99,8 +107,9 @@ const DataTableCard = ({ product }) => {
                 variant="small"
                 color="blue-gray"
                 className="font-normal"
+                title={product.brand}
               >
-                {product.brand || ""}
+                {truncateText(product.brand, 20)}
               </Typography>
             </div>
           </div>
@@ -113,8 +122,9 @@ const DataTableCard = ({ product }) => {
                 variant="small"
                 color="blue-gray"
                 className="font-normal"
+                title={product.category}
               >
-                {product.category || ""}
+                {truncateText(product.category, 20)}
               </Typography>
             </div>
           </div>

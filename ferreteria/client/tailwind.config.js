@@ -12,13 +12,13 @@ module.exports = withMT({
     extend: {
       colors: {
         navBar: '#04151F',
-        card: '#183A37',
+        card: '#1E293B',
         blancoAhumado: '#F5F5F5',
         accentColor: '#EFD6AC',
         grisOscuro: '#2C2C2C',
         secundary: '#708D81',
-        text: '#708D81',
-        cardLigth: '#01497C',
+        text: '#F1F5F9',
+        cardLigth: '#FFFFFF',
         textLigth: '#001427',
         navbarLigth: '#012A4A',
         secundaryLigth: '#2A6F97',

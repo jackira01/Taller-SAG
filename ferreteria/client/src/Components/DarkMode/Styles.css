@@ -1,4 +1,9 @@
 /* The switch - the box around the slider */
+html {
+  background-color: #F8FAFC;  /* Modo claro (defecto) */
+  color: #000;
+}
+
 .switch {
     font-size: 17px;
     position: relative;
@@ -50,6 +55,6 @@
     box-shadow: inset 15px -4px 0px 15px #fff000;
   }
   .dark {
-    background-color:  #04151F;
+    background-color:  #0F172A;
     color: #fff;
   }

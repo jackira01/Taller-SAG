@@ -17,7 +17,7 @@ const Pagination = ({
   };
 
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col items-center mb-5'>
       {/* <!-- Help text --> */}
       <span className='text-sm text-gray-700 dark:text-gray-400'>
         Pagina {currentPage} de {''}

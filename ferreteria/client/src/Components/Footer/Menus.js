@@ -14,6 +14,6 @@ export const PROGRAMERS = [
   },
   {
     name: 'Cristopher Alexander Lazo',
-    link: 'https://www.linkedin.com/in/jhoan-nicolas-beru-alvarez-a30a61210/',
+    link: 'https://www.linkedin.com/in/cristopher-alexander-lazo//',
   },
 ];
